@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('predmeti', function (Blueprint $table) {
             $table->id();
-            $table->string("ime_predmeta");
+            $table->string("ime_predmeta")->required();
             $table->timestamps();
         });
     }

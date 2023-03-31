@@ -13,9 +13,8 @@ return new class extends Migration
     {
         Schema::create('ocene', function (Blueprint $table) {
             $table->id();
-            $table->integer("vrednost");
-            $table->dateTime("datum_vreme");
-            $table->text("opis");
+            $table->integer("vrednost")->required();
+            $table->text("opis")->nullable();
             $table->foreignId("id_ucenik")->constrained("ucenici")->cascadeOnDelete();
             $table->foreignId("id_profesor")->constrained("profesori")->cascadeOnDelete();
             $table->foreignId("id_predmet")->constrained("predmeti")->cascadeOnDelete();

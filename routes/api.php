@@ -14,6 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+
+Route::middleware(['auth:web'])->group(function () {
+    // samo za ulogovane administratore
+    Route::post('/user/logout', [UserAuthController::class, 'logout'])
+        ->name('user.logout');
 });

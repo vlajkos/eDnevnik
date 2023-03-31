@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('profesori', function (Blueprint $table) {
             $table->id();
-            $table->string("ime");
-            $table->string("prezime");
-            $table->string("email");
-            $table->string("lozinka");
+            $table->string("ime")->required();
+            $table->string("prezime")->required();
+            $table->string("email")->required();
+            $table->string("lozinka")->required();
+            $table->boolean("is_razredni")->default(false);
+            $table->timestamps();
         });
     }
 

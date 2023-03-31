@@ -14,12 +14,12 @@ return new class extends Migration
         Schema::create('ucenici', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string("ime");
-            $table->string("prezime");
-            $table->string("email");
-            $table->integer("jmbg");
-            $table->string("broj_telefona");
-            $table->date("datum_rodjenja");
+            $table->string("ime")->required();
+            $table->string("prezime")->required();
+            $table->string("email")->required();
+            $table->integer("jmbg")->required();
+            $table->string("broj_telefona")->nullable();
+            $table->date("datum_rodjenja")->nullable();
             $table->foreignId("id_odeljenje")->constrained("odeljenja")->cascadeOnDelete();
         });
     }
