@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Profesor extends Model
 {
     public $table = 'profesori';
+    protected $casts = [
+        'is_razredni' => 'boolean' // 1 / 0 -> true / false
+    ];
     public function odeljenja()
     {
         return $this->belongsToMany(Odeljenje::class, "odeljenje_profesor");

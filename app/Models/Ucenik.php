@@ -9,6 +9,9 @@ class Ucenik extends Model
 {
     public $table = 'ucenici';
     use HasFactory;
+    protected $casts = [
+        'datum_rodjenja' => 'date',
+    ];
     public function odeljenje()
     {
         return $this->belongsTo(Odeljenje::class, "id_odeljenje");
