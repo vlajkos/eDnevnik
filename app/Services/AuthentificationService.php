@@ -8,10 +8,18 @@ class AuthenticationService
 {
     public function login(string $guard, string $email, string $password): bool
     {
-        return Auth::guard($guard)->attempt([
-            'email' => $email,
-            'password' => $password,
-        ]);
+
+        if ($guard = "ucenik") {
+            return Auth::guard($guard)->attempt([
+                'email' => $email,
+                'jmbg' => $password,
+            ]);
+        } else {
+            return Auth::guard($guard)->attempt([
+                'email' => $email,
+                'lozinka' => $password,
+            ]);
+        }
     }
 
     public function logout(string $guard)
