@@ -3,12 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Ucenik extends Model
+
+class Ucenik extends Authenticatable
 {
     public $table = 'ucenici';
     use HasFactory;
+    protected $hidden = ['jmbg'];
     protected $casts = [
         'datum_rodjenja' => 'date',
     ];

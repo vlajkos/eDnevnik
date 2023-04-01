@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string("ime")->required();
             $table->string("prezime")->required();
             $table->string("email")->required();
-            $table->string("jmbg")->required();
+            $table->bigInteger("jmbg")->required();
             $table->string("broj_telefona")->nullable();
             $table->date("datum_rodjenja")->nullable();
             $table->foreignId("id_odeljenje")->constrained("odeljenja")->cascadeOnDelete();

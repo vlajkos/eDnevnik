@@ -3,11 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Profesor extends Model
+class Profesor extends Authenticatable
 {
     public $table = 'profesori';
+    protected $hidden = ['lozinka'];
     protected $casts = [
         'is_razredni' => 'boolean' // 1 / 0 -> true / false
     ];

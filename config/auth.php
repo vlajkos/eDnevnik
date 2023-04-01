@@ -36,9 +36,14 @@ return [
     */
 
     'guards' => [
-        'web' => [
+        'ucenik' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'ucenici',
+        ],
+
+        'profesor' => [
+            'driver' => 'session',
+            'provider' => 'profesori',
         ],
     ],
 
@@ -60,16 +65,22 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'ucenici' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => App\Models\Ucenik::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'profesori' => [
+            'driver' => 'eloquent',
+            'model' => \App\Models\Profesor::class,
+        ],
     ],
+
+    // 'users' => [
+    //     'driver' => 'database',
+    //     'table' => 'users',
+    // ],
+
 
     /*
     |--------------------------------------------------------------------------
