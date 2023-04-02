@@ -5,18 +5,18 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequestUcenik;
-use App\Services\AuthenticationService;
+use App\Services\UcenikAuthService;
 
 class UcenikAuthController extends Controller
 {
-    // public function loginShow()
-    // {
-    //     return view('auth.admin_login');
-    // }
+    public function loginShow()
+    {
+        return view('auth.login');
+    }
 
     public function login(LoginRequestUcenik $request)
     {
-        $service = new AuthenticationService();
+        $service = new UcenikAuthService();
         $success = $service->login(
             'ucenik',
             $request->input('email'),
@@ -26,13 +26,13 @@ class UcenikAuthController extends Controller
         return $success ?
             redirect()->route('ucenici.index') :
             redirect()->back()->withErrors([
-                'email' => 'Neispravni podaci',
+                'email' => 'Neispravni kredencijali',
             ]);
     }
 
     public function logout()
     {
-        $service = new AuthenticationService();
+        $service = new UcenikAuthService();
         $service->logout('ucenik');
 
         return redirect()->route('login.show');

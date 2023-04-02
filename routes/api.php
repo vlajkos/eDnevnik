@@ -19,8 +19,8 @@ use Illuminate\Support\Facades\Route;
 // });
 
 
-Route::middleware(['auth:web'])->group(function () {
-    // samo za ulogovane administratore
-    Route::post('/user/logout', [UserAuthController::class, 'logout'])
-        ->name('user.logout');
-});
+// Route::middleware(['auth:web'])->group(function () {
+//     // samo za ulogovane administratore
+//     Route::post('/user/logout', [UserAuthController::class, 'logout'])
+//         ->name('user.logout');
+// });

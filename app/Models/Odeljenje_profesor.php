@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Odeljenje_profesor extends Model
 {
-    public function prefesor()
+    public function profesor()
     {
         return $this->belongsTo(Profesor::class);
     }

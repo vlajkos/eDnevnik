@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
         Profesor::create([
             "ime" => "Nataša",
             "prezime" => "Kostić",
-            "email" => "natsakostic77@gmail.com",
+            "email" => "natasakostic77@gmail.com",
             "lozinka" => Hash::make("natasa77"),
             "is_razredni" => false,
 
