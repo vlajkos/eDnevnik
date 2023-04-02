@@ -10,7 +10,7 @@ class Ucenik extends Authenticatable
 {
     public $table = 'ucenici';
     use HasFactory;
-    protected $hidden = ['jmbg'];
+    protected $hidden = ['password'];
     protected $casts = [
         'datum_rodjenja' => 'date',
     ];

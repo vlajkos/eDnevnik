@@ -4,7 +4,7 @@ namespace App\Services;
 
 use Illuminate\Support\Facades\Auth;
 
-class UcenikAuthService
+class AuthService
 {
     public function login(string $guard, string $email, string $password): bool
     {
@@ -12,7 +12,7 @@ class UcenikAuthService
 
         return Auth::guard($guard)->attempt([
             'email' => $email,
-            'jmbg' => $password,
+            'password' => $password,
         ]);
     }
 

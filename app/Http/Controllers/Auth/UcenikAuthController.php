@@ -4,23 +4,23 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\LoginRequestUcenik;
-use App\Services\UcenikAuthService;
+use App\Http\Requests\LoginRequest;
+use App\Services\AuthService;
 
 class UcenikAuthController extends Controller
 {
     public function loginShow()
     {
-        return view('auth.login');
+        return view('auth.ucenik_login');
     }
 
-    public function login(LoginRequestUcenik $request)
+    public function login(LoginRequest $request)
     {
-        $service = new UcenikAuthService();
+        $service = new AuthService();
         $success = $service->login(
-            'ucenik',
+            'web',
             $request->input('email'),
-            $request->input('jmbg')
+            $request->input('password')
         );
 
         return $success ?
@@ -32,9 +32,9 @@ class UcenikAuthController extends Controller
 
     public function logout()
     {
-        $service = new UcenikAuthService();
-        $service->logout('ucenik');
+        $service = new AuthService();
+        $service->logout('web');
 
-        return redirect()->route('login.show');
+        return redirect()->route('ucenik.login.show');
     }
 }

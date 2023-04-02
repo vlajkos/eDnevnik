@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string("ime")->required();
             $table->string("prezime")->required();
             $table->string("email")->required();
-            $table->string("lozinka")->required();
+            $table->string("password")->required();
             $table->boolean("is_razredni")->default(false);
             $table->timestamps();
         });

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class LoginRequestProfesor extends FormRequest
+class LoginRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -14,7 +14,7 @@ class LoginRequestProfesor extends FormRequest
     {
         return [
             'email' => ['required', 'email'],
-            'lozinka' => ['required', 'string'],
+            'password' => ['required', 'string'],
         ];
     }
 }

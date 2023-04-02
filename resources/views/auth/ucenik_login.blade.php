@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>Log in</h1>
+<h1>Log in Ucenik</h1>
 
-<form method="POST" action="{{ route('login.store') }}">
+<form method="POST" action="{{ route('ucenik.login.store') }}">
     @csrf
 
     <div class="mb-3">

@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Profesor extends Authenticatable
 {
     public $table = 'profesori';
-    protected $hidden = ['lozinka'];
+    protected $hidden = ['password'];
     protected $casts = [
         'is_razredni' => 'boolean' // 1 / 0 -> true / false
     ];

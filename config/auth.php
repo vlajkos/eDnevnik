@@ -14,8 +14,12 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'profesor',
-        'passwords' => 'profesor',
+        'guard' => 'web', // admin, seller, ....
+        'passwords' => 'users',
+    ],
+    [
+        'guard' => 'admin', // admin, seller, ....
+        'passwords' => 'admins'
     ],
 
     /*
@@ -35,15 +39,17 @@ return [
     |
     */
 
+    // guard -> provider -> model
+
     'guards' => [
-        'ucenik' => [
-            'driver' => 'session',
-            'provider' => 'ucenici',
+        'web' => [
+            'driver' => 'session', // laravel cuvati podatke o loginu u sesiji
+            'provider' => 'users',
         ],
 
-        'profesor' => [
+        'admin' => [
             'driver' => 'session',
-            'provider' => 'profesori',
+            'provider' => 'admins',
         ],
     ],
 
@@ -64,23 +70,19 @@ return [
     |
     */
 
+    // guard -> provider -> model
+    // (web) -> (users) -> (App\Models\User::class)
     'providers' => [
-        'ucenici' => [
+        'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\Ucenik::class,
         ],
 
-        'profesori' => [
+        'admins' => [
             'driver' => 'eloquent',
             'model' => \App\Models\Profesor::class,
         ],
     ],
-
-    // 'users' => [
-    //     'driver' => 'database',
-    //     'table' => 'users',
-    // ],
-
 
     /*
     |--------------------------------------------------------------------------
@@ -108,6 +110,12 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
+        'admins' => [
+            'provider' => 'admins',
+            'table' => 'password_reset_tokens',
+            'expire' => 60,
+            'throttle' => 60,
+        ]
     ],
 
     /*
