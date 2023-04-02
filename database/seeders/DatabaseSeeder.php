@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Profesor;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -22,7 +23,7 @@ class DatabaseSeeder extends Seeder
             "ime" => "Nataša",
             "prezime" => "Kostić",
             "email" => "natsakostic77@gmail.com",
-            "lozinka" => "natasa293929",
+            "lozinka" => Hash::make("natasa77"),
             "is_razredni" => false,
 
         ]);
