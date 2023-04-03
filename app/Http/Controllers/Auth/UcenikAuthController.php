@@ -24,7 +24,7 @@ class UcenikAuthController extends Controller
         );
 
         return $success ?
-            redirect()->route('ucenici.index') :
+            redirect()->route('clients.index') :
             redirect()->back()->withErrors([
                 'email' => 'Neispravni kredencijali',
             ]);
