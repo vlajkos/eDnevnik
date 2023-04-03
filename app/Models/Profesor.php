@@ -16,6 +16,10 @@ class Profesor extends Authenticatable
     {
         return $this->belongsToMany(Odeljenje::class, "odeljenje_profesor");
     }
+    public function odeljenje()
+    {
+        return $this->hasOne(Odeljenje::class, "id_profesor");
+    }
     public function ocene()
     {
         return $this->hasMany(Ocena::class, "id_prefosr");
