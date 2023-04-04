@@ -6,7 +6,6 @@
 <h1>Log in Ucenik</h1>
 <?php
 echo $loggedUser;
-echo "Zdravo";
 ?>
 
 @endsection

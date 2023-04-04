@@ -21,7 +21,7 @@ class Controller extends BaseController
         $profesor = $request->user();
 
 
-        return view("clients")->with(["loggedUser" => $profesor->odeljenje]);;
+        return view("clients")->with(["loggedUser" => $profesor]);;
     }
     public function index2()
     {

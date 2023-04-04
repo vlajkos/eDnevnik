@@ -20,7 +20,7 @@
 
                         <div>
                             @auth
-                            <form method="POST" @auth('web') action="{{ route('logout') }}" @endauth @auth('admin') action="{{ route('logout') }}" @endauth>
+                            <form method="POST" @auth('web') action="{{ route('ucenik.logout') }}" @endauth @auth('admin') action="{{ route('profesor.logout') }}" @endauth>
                                 @csrf
                                 <button type="submit" class="btn btn-light">Log out</button>
                             </form>

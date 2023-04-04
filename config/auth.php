@@ -17,10 +17,7 @@ return [
         'guard' => 'web', // admin, seller, ....
         'passwords' => 'users',
     ],
-    [
-        'guard' => 'admin', // admin, seller, ....
-        'passwords' => 'admins'
-    ],
+
 
     /*
     |--------------------------------------------------------------------------
