@@ -14,9 +14,24 @@ use App\Http\Requests\UcenikStoreRequest;
 class UcenikController extends Controller
 {
 
+    public function index(Request $request)
+    {
+        $idOdeljenje = $request->user()->odeljenje->id;
+        $ucenici = Ucenik::all()->where('id_odeljenje', '=', $idOdeljenje);
+        return view("ucenici")->with([
+            'ucenici' => $ucenici
+        ]);
+    }
+
     public function create()
     {
         return view('dodaj');
+    }
+    public function show(Request $request, Ucenik $ucenik)
+    {
+        return view('ucenik')->with([
+            'ucenik' => $ucenik,
+        ]);
     }
 
     public function store(UcenikStoreRequest $request)

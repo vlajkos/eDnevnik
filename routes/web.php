@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\ProfesorAuthController;
 use App\Http\Controllers\Auth\UcenikAuthController;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\ControllerTest;
 use App\Http\Controllers\UcenikController;
 
 /*
@@ -82,14 +82,16 @@ Route::middleware(['auth:admin'])->group(function () {
     //RUTE ZA UCENIKE
     Route::get('ucenici/dodaj', [UcenikController::class, 'create'])->name('ucenik.store.show');
     Route::post('ucenici/dodaj', [UcenikController::class, 'store'])->name('ucenik.store');
+    Route::get('ucenici', [UcenikController::class, 'index'])->name('ucenici.show');
+    Route::get('/ucenik/{ucenik}', [UcenikController::class, 'show'])->name('ucenik.show');
 });
 
 //Rute kojima pristup imaju i admin i profesor
 Route::middleware(['auth:admin,web'])->group(function () {
-    Route::get('clients/index', [Controller::class, 'index'])->name("clients.index");
+    Route::get('clients/index', [ControllerTest::class, 'index'])->name("clients.index");
 });
 
 
-Route::get('/login', [Controller::class, 'index2'])->name("login");
+Route::get('/login', [ControllerTest::class, 'index2'])->name("login");
 
 //Rute 
