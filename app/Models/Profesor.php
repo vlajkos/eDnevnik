@@ -18,10 +18,10 @@ class Profesor extends Authenticatable
     }
     public function odeljenje()
     {
-        return $this->hasOne(Odeljenje::class, "id_profesor");
+        return $this->hasOne(Odeljenje::class, "id_razredni");
     }
     public function ocene()
     {
-        return $this->hasMany(Ocena::class, "id_prefosr");
+        return $this->hasMany(Ocena::class, "id_prefosor");
     }
 }
