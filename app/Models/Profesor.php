@@ -22,6 +22,6 @@ class Profesor extends Authenticatable
     }
     public function ocene()
     {
-        return $this->hasMany(Ocena::class, "id_prefosor");
+        return $this->hasMany(Ocena::class, "id_profesor");
     }
 }
