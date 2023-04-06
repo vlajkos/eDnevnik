@@ -84,11 +84,21 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::post('ucenici/dodaj', [UcenikController::class, 'store'])->name('ucenik.store');
     Route::get('ucenici', [UcenikController::class, 'index'])->name('ucenici.show');
     Route::get('/ucenik/{ucenik}', [UcenikController::class, 'show'])->name('ucenik.show');
+
+
+    //Rute za odeljenja
+    Route::get('odeljenja', [OdeljenjeController::class, 'index'])->name('odeljenja');
+    Route::get('odeljenja/{odeljenje}', [OdeljenjeController::class, 'show'])->name('odeljenje.show');
+
+    //Rute za ucenike
+
+    //Rute za ocene
+    Route::get('odeljenja/{odeljenje}/ucenici{ucenik}', [OcenaController::class, 'store'])->name('ocena.store');
 });
 
-//Rute kojima pristup imaju i admin i profesor
+//Rute kojima pristup imaju i ucenik i profesor
 Route::middleware(['auth:admin,web'])->group(function () {
-    Route::get('clients/index', [ControllerTest::class, 'index'])->name("clients.index");
+    Route::get('/index', [ControllerTest::class, 'index'])->name("index");
 });
 
 

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('odeljenje_predmet', function (Blueprint $table) {
             $table->id();
             $table->foreignId("id_odeljenje")->constrained("odeljenja")->cascadeOnDelete();
-            $table->foreignId("id_predmeta")->constrained("predmeti")->cascadeOnDelete();
+            $table->foreignId("id_predmet")->constrained("predmeti")->cascadeOnDelete();
             $table->timestamps();
         });
     }

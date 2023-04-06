@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Ucenik;
 use App\Models\Profesor;
+use App\Models\Predmet;
 use Illuminate\Support\Facades\Hash;
 
 use App\Http\Requests\UcenikStoreRequest;
@@ -29,8 +30,12 @@ class UcenikController extends Controller
     }
     public function show(Request $request, Ucenik $ucenik)
     {
+        $predmeti = $ucenik->odeljenje->predmeti;
+        $ocene = $ucenik->ocene();
         return view('ucenik')->with([
             'ucenik' => $ucenik,
+            'predmeti' => $predmeti,
+            'ocene' => $ocene
         ]);
     }
 
@@ -47,6 +52,6 @@ class UcenikController extends Controller
         $ucenik->broj_telefona = $request->input('broj_telefona');
         $ucenik->id_odeljenje = $razredni->odeljenje->id;
         $ucenik->save();
-        return redirect()->route('clients.index');
+        return redirect()->route('index');
     }
 }

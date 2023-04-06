@@ -13,14 +13,14 @@ class OdeljenjeSeeder extends Seeder
         return
             Odeljenje::create([
                 "naziv" => $naziv,
-                "id_profesor" => $id
+                "id_razredni" => $id
             ]);
     }
     public function run(): void
     {
-        $odeljenje = $this->factory("1/2", 2);
-        $odeljenje = $this->factory("2/4", 3);
-        $odeljenje = $this->factory("1/1", 4);
-        $odeljenje = $this->factory("2/3", 5);
+        $odeljenje = $this->factory("1/2", 1);
+        $odeljenje = $this->factory("2/4", 2);
+        $odeljenje = $this->factory("1/1", 3);
+        $odeljenje = $this->factory("2/3", 4);
     }
 }

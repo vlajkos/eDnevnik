@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+
         Schema::create('predmeti', function (Blueprint $table) {
             $table->id();
             $table->string("ime_predmeta")->required();

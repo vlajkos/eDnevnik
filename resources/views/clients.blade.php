@@ -3,9 +3,9 @@
 @section('content')
 
 
-<h1>Log in Ucenik</h1>
+<h1>Početna</h1>
 <?php
-echo $loggedUser;
+echo "Zdravo " . $loggedUser->ime . " " . $loggedUser->prezime;
 ?>
 
 @endsection

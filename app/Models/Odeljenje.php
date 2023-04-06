@@ -25,6 +25,6 @@ class Odeljenje extends Model
     }
     public function predmeti()
     {
-        return $this->belongsToMany(Predmet::class, "odeljenje_profesor");
+        return $this->belongsToMany(Predmet::class, "odeljenje_predmet", 'id_odeljenje', 'id_predmet');
     }
 }

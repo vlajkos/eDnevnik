@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string("email")->required();
             $table->string("password")->required();
             $table->boolean("is_razredni")->default(false);
+            $table->foreignId("id_predmet")->constrained("predmeti")->cascadeOnDelete();
             $table->timestamps();
         });
     }

@@ -24,7 +24,7 @@ class ProfesorAuthController extends Controller
         );
 
         return $success ?
-            redirect()->route('clients.index') :
+            redirect()->route('index') :
             redirect()->back()->withErrors([
                 'email' => 'Neispravni kredencijali',
             ]);

@@ -11,7 +11,7 @@ class ControllerTest extends Controller
         $profesor = $request->user();
 
 
-        return view("clients")->with(["loggedUser" => $profesor]);;
+        return view("index")->with(["loggedUser" => $profesor]);;
     }
     public function index2()
     {

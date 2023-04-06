@@ -24,4 +24,8 @@ class Profesor extends Authenticatable
     {
         return $this->hasMany(Ocena::class, "id_profesor");
     }
+    public function predmet()
+    {
+        return $this->belongsTo(Predmet::class, "id_predmet");
+    }
 }

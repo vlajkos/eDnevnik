@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use App\Models\Profesor;
 use App\Models\Ucenik;
 use App\Models\Odeljenje;
+use App\Models\Odeljenje_predmet;
 use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
@@ -21,6 +22,23 @@ class DatabaseSeeder extends Seeder
         // $table->string("prezime");
         // $table->string("email");
         // $table->string("password");
+
+        Odeljenje_predmet::create([
+            "id_odeljenje" => 1,
+            "id_predmet" => 1
+        ]);
+        Odeljenje_predmet::create([
+            "id_odeljenje" => 1,
+            "id_predmet" => 2
+        ]);
+        Odeljenje_predmet::create([
+            "id_odeljenje" => 1,
+            "id_predmet" => 3
+        ]);
+        Odeljenje_predmet::create([
+            "id_odeljenje" => 1,
+            "id_predmet" => 4
+        ]);
         // Profesor::create([
         //     "ime" => "Nataša",
         //     "prezime" => "Kostić",
