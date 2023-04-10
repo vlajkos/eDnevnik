@@ -14,7 +14,7 @@ class Profesor extends Authenticatable
     ];
     public function odeljenja()
     {
-        return $this->belongsToMany(Odeljenje::class, "odeljenje_profesor");
+        return $this->belongsToMany(Odeljenje::class, "odeljenje_profesor", "id_profesor", "id_odeljenje");
     }
     public function odeljenje()
     {

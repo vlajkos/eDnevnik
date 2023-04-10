@@ -7,8 +7,10 @@
 @foreach ($ucenici as $ucenik)
 @php
 $ucenikId = $ucenik->id;
+
+$odeljenjeId = $odeljenje->id;
 @endphp
-<a href="{{ route('ucenik.show', ['ucenik' => $ucenikId]) }}"> {{ ucfirst($ucenik->ime) }} {{ucfirst($ucenik->prezime)}}</a>
+<a href="{{ route('ucenik.show.profesor', ['ucenik' => $ucenikId, 'odeljenje' => $odeljenjeId, ]) }}"> {{ ucfirst($ucenik->ime) }} {{ucfirst($ucenik->prezime)}}</a>
 <br>
 
 @endforeach

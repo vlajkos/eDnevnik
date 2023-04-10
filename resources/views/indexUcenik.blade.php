@@ -24,10 +24,12 @@
         </tr>
     </thead>
     <tbody>
+
         @foreach ($predmeti as $predmet)
-        @php $i=0; $ukupno=0; @endphp
+        @php $ukupno = 0; $i=0; @endphp
         <tr>
             <td>@php echo $predmet->ime_predmeta @endphp</td>
+
             <td>@foreach ($ocene as $ocena)@php if($ocena->id_predmet == $predmet->id) {
                 $i++;
                 $ukupno += $ocena->vrednost;
@@ -41,6 +43,7 @@
     </tbody>
 
 </table>
+
 
 
 

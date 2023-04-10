@@ -5,6 +5,8 @@ use App\Http\Controllers\Auth\ProfesorAuthController;
 use App\Http\Controllers\Auth\UcenikAuthController;
 use App\Http\Controllers\ControllerTest;
 use App\Http\Controllers\UcenikController;
+use App\Http\Controllers\OdeljenjeController;
+use App\Http\Controllers\ocenaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,6 +75,7 @@ Route::middleware(['auth:web'])->group(function () {
     // samo za ulogovane ucenike
     Route::post('ucenik/logout', [UcenikAuthController::class, 'logout'])
         ->name('ucenik.logout');
+    Route::get('indexUcenik', [ControllerTest::class, 'indexUcenik'])->name("indexUcenik");
 });
 //Rute kojima pristup ima samo profesor
 Route::middleware(['auth:admin'])->group(function () {
@@ -83,22 +86,29 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('ucenici/dodaj', [UcenikController::class, 'create'])->name('ucenik.store.show');
     Route::post('ucenici/dodaj', [UcenikController::class, 'store'])->name('ucenik.store');
     Route::get('ucenici', [UcenikController::class, 'index'])->name('ucenici.show');
-    Route::get('/ucenik/{ucenik}', [UcenikController::class, 'show'])->name('ucenik.show');
+
 
 
     //Rute za odeljenja
+    //Razredni
+    Route::get('odeljenje', [OdeljenjeController::class, 'indexOdeljenje'])->name('odeljenje');
+
+
+    //Profesori
     Route::get('odeljenja', [OdeljenjeController::class, 'index'])->name('odeljenja');
     Route::get('odeljenja/{odeljenje}', [OdeljenjeController::class, 'show'])->name('odeljenje.show');
 
     //Rute za ucenike
-
+    Route::get('/index', [ControllerTest::class, 'index'])->name("index");
+    Route::get('/odeljenja/{odeljenje}/ucenici/{ucenik}', [UcenikController::class, 'showProfesor'])->name('ucenik.show.profesor');
     //Rute za ocene
-    Route::get('odeljenja/{odeljenje}/ucenici{ucenik}', [OcenaController::class, 'store'])->name('ocena.store');
+    Route::post('odeljenja/{odeljenje}/ucenici/{ucenik}', [OcenaController::class, 'store'])->name('ocena.store');
 });
 
 //Rute kojima pristup imaju i ucenik i profesor
 Route::middleware(['auth:admin,web'])->group(function () {
-    Route::get('/index', [ControllerTest::class, 'index'])->name("index");
+
+    Route::get('/ucenik/{ucenik}', [UcenikController::class, 'show'])->name('ucenik.show');
 });
 
 

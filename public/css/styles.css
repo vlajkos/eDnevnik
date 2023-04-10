@@ -1,0 +1,42 @@
+.dodajOcenuForm {
+    display: flex;
+    flex-direction: column;
+    max-width: 18rem;
+    align-items: flex-start;
+    height: 12rem;
+    justify-content: space-between;
+    border: 1px solid rgb(236, 230, 230);
+    border-radius: 5px;
+    padding: .5rem;
+
+
+
+}
+
+.dodajOcenuDiv {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+
+}
+
+.dodajOcenuDiv label {
+    margin-right: 1rem;
+}
+
+#ocenaInput {
+    width: 2rem;
+    text-align: center;
+}
+
+.dodajOcenuForm button {
+    background-color: rgb(236, 230, 230);
+    border-radius: 5px;
+    border: 1px solid black;
+    align-self: center;
+}
+
+.dodajOcenuForm h3 {
+    align-self: center;
+}
