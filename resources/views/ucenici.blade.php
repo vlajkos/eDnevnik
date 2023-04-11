@@ -15,4 +15,5 @@ $odeljenjeId = $odeljenje->id;
 
 @endforeach
 
+
 @endsection

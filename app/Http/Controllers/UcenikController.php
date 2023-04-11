@@ -19,8 +19,7 @@ class UcenikController extends Controller
     public function index(Request $request)
     {
         $idOdeljenje = $request->user()->odeljenje->id;
-        $odeljenje =
-            $ucenici = Ucenik::all()->where('id_odeljenje', '=', $idOdeljenje);
+        $ucenici = Ucenik::all()->where('id_odeljenje', '=', $idOdeljenje);
         return view("ucenici")->with([
             'ucenici' => $ucenici
         ]);

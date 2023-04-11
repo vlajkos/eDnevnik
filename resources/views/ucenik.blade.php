@@ -33,7 +33,8 @@
                 $ukupno += $ocena->vrednost;
                 echo $ocena->vrednost; }@endphp
                 @endforeach</td>
-            <td>@php $prosek = number_format($ukupno/$i, 2); echo $prosek; @endphp </td>
+            <td>@php if ($i != 0) {$prosek = number_format($ukupno/$i, 2); echo $prosek; }
+                @endphp </td>
 
         </tr>
 

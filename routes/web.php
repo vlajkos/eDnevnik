@@ -85,18 +85,20 @@ Route::middleware(['auth:admin'])->group(function () {
     //RUTE ZA UCENIKE
     Route::get('ucenici/dodaj', [UcenikController::class, 'create'])->name('ucenik.store.show');
     Route::post('ucenici/dodaj', [UcenikController::class, 'store'])->name('ucenik.store');
-    Route::get('ucenici', [UcenikController::class, 'index'])->name('ucenici.show');
+    // Route::get('ucenici', [UcenikController::class, 'index'])->name('ucenici.show');
 
 
 
     //Rute za odeljenja
     //Razredni
-    Route::get('odeljenje', [OdeljenjeController::class, 'indexOdeljenje'])->name('odeljenje');
+    Route::get('mojeOdeljenje', [OdeljenjeController::class, 'indexOdeljenje'])->name('odeljenje');
+    Route::get('mojeOdeljenje/ucenik/{ucenik}', [UcenikController::class, 'show'])->name('ucenik.show');
 
 
     //Profesori
     Route::get('odeljenja', [OdeljenjeController::class, 'index'])->name('odeljenja');
     Route::get('odeljenja/{odeljenje}', [OdeljenjeController::class, 'show'])->name('odeljenje.show');
+
 
     //Rute za ucenike
     Route::get('/index', [ControllerTest::class, 'index'])->name("index");
@@ -106,10 +108,10 @@ Route::middleware(['auth:admin'])->group(function () {
 });
 
 //Rute kojima pristup imaju i ucenik i profesor
-Route::middleware(['auth:admin,web'])->group(function () {
+// Route::middleware(['auth:admin,web'])->group(function () {
 
-    Route::get('/ucenik/{ucenik}', [UcenikController::class, 'show'])->name('ucenik.show');
-});
+//     Route::get('/ucenik/{ucenik}', [UcenikController::class, 'show'])->name('ucenik.show');
+// });
 
 
 Route::get('/login', [ControllerTest::class, 'index2'])->name("login");
