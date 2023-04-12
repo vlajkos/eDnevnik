@@ -15,5 +15,5 @@ $odeljenjeId = $odeljenje->id;
 
 @endforeach
 <a href="{{ route('ucenik.store.show') }}">Dodaj učenika</a>
-
+<a href="{{ route('predmet.store.show') }}">Dodaj predmet</a>
 @endsection

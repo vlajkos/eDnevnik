@@ -6,7 +6,8 @@ use App\Http\Controllers\Auth\UcenikAuthController;
 use App\Http\Controllers\ControllerTest;
 use App\Http\Controllers\UcenikController;
 use App\Http\Controllers\OdeljenjeController;
-use App\Http\Controllers\ocenaController;
+use App\Http\Controllers\OcenaController;
+use App\Http\Controllers\PredmetController;
 
 /*
 |--------------------------------------------------------------------------
@@ -93,11 +94,17 @@ Route::middleware(['auth:admin'])->group(function () {
     //Razredni
     Route::get('mojeOdeljenje', [OdeljenjeController::class, 'indexOdeljenje'])->name('odeljenje');
     Route::get('mojeOdeljenje/ucenik/{ucenik}', [UcenikController::class, 'show'])->name('ucenik.show');
+    Route::get('mojeOdeljenje/dodajPredmete', [PredmetController::class, 'show'])->name('predmet.store.show');
+    Route::post('mojeOdeljenje/dodajPredmete', [PredmetController::class, 'store'])->name('predmet.store');
 
 
     //Profesori
     Route::get('odeljenja', [OdeljenjeController::class, 'index'])->name('odeljenja');
     Route::get('odeljenja/{odeljenje}', [OdeljenjeController::class, 'show'])->name('odeljenje.show');
+
+
+
+
 
 
     //Rute za ucenike

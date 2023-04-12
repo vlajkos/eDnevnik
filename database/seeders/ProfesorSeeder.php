@@ -35,5 +35,9 @@ class ProfesorSeeder extends Seeder
         $profesor = $this->factory("milica", "Markovic", "milica@gmail.com", "lozinkaprofesor", false, 2);
         $profesor = $this->factory("Jovana", "Markovic", "jovana@gmail.com", "lozinkaprofesor", false, 3);
         $profesor = $this->factory("aleksandar", "Markovic", "aleksandar@gmail.com", "lozinkaprofesor", false, 1);
+
+
+        $profesor = $this->factory("Jerotije", "Milić", "jerotije@gmail.com", "lozinkaprofesor", false, 5);
+        $profesor = $this->factory("Miroslav", "anić", "miroslav@gmail.com", "lozinkaprofesor", false, 5);
     }
 }
