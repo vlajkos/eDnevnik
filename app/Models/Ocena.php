@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ocena extends Model
 {
+
     protected $casts = [
         'vrednost' => 'integer' // 1 / 0 -> true / false
     ];

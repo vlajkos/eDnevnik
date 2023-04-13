@@ -30,12 +30,13 @@
         <tr>
             <td>@php echo $predmet->ime_predmeta @endphp</td>
 
+
             <td>@foreach ($ocene as $ocena)@php if($ocena->id_predmet == $predmet->id) {
                 $i++;
                 $ukupno += $ocena->vrednost;
                 echo $ocena->vrednost; }@endphp
                 @endforeach</td>
-            <td>@php $prosek = number_format($ukupno/$i, 2); echo $prosek; @endphp </td>
+            <td>@php if($i != 0) { $prosek = number_format($ukupno/$i, 2); echo $prosek; }@endphp </td>
 
         </tr>
 

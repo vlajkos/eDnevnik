@@ -25,5 +25,6 @@ class PredmetSeeder extends Seeder
         $predmet = $this->factory("Geografija");
         $predmet = $this->factory("Istorija");
         $predmet = $this->factory("Engleski jezik");
+        $predmet = $this->factory("Fizičko vaspitanje");
     }
 }

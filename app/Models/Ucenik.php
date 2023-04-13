@@ -20,6 +20,6 @@ class Ucenik extends Authenticatable
     }
     public function ocene()
     {
-        return $this->hasMany(Ocena::class, "id_ucenik")->where('id_ucenik', 2);
+        return $this->hasMany(Ocena::class, "id_ucenik");
     }
 }

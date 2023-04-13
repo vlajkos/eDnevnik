@@ -30,14 +30,17 @@ class ProfesorSeeder extends Seeder
         $profesor = $this->factory("Zarko", "Životić", "zarkoz@gmail.com", "zarkoz123", true, 3);
         $profesor = $this->factory("Milan", "Janković", "milanj88@gmail.com", "milanj88", true, 4);
 
-        $profesor = $this->factory("Milan", "Markovic", "milan@gmail.com", "lozinkaprofesor", false, 1);
-        $profesor = $this->factory("ana", "Markovic", "ana88@gmail.com", "lozinkaprofesor", false, 1);
-        $profesor = $this->factory("milica", "Markovic", "milica@gmail.com", "lozinkaprofesor", false, 2);
-        $profesor = $this->factory("Jovana", "Markovic", "jovana@gmail.com", "lozinkaprofesor", false, 3);
-        $profesor = $this->factory("aleksandar", "Markovic", "aleksandar@gmail.com", "lozinkaprofesor", false, 1);
+        $profesor = $this->factory("Milan", "Markovic", "milan@gmail.com", "sifraprofesor", false, 1);
+        $profesor = $this->factory("ana", "Teofilović", "ana88@gmail.com", "sifraprofesor", false, 1);
+        $profesor = $this->factory("milica", "Macura", "milica@gmail.com", "sifraprofesor", false, 2);
+        $profesor = $this->factory("Jovana", "Joksimović", "jovana@gmail.com", "sifraprofesor", false, 3);
+        $profesor = $this->factory("aleksandar", "Markovic", "aleksandar@gmail.com", "sifraprofesor", false, 1);
 
 
-        $profesor = $this->factory("Jerotije", "Milić", "jerotije@gmail.com", "lozinkaprofesor", false, 5);
-        $profesor = $this->factory("Miroslav", "anić", "miroslav@gmail.com", "lozinkaprofesor", false, 5);
+        $profesor = $this->factory("Jerotije", "Milić", "jerotije@gmail.com", "sifraprofesor", false, 5);
+        $profesor = $this->factory("Miroslav", "anić", "miroslav@gmail.com", "sifraprofesor", false, 5);
+
+        $profesor = $this->factory("Andrija", "Simić", "andrija@gmail.com", "sifraprofesor", false, 6);
+        $profesor = $this->factory("Filip", "Filipović", "filip@gmail.com", "sifraprofesor", false, 6);
     }
 }
