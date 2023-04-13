@@ -14,20 +14,41 @@
             <th>Profesor
             </th>
 
+            <th>Obriši
+            </th>
 
         </tr>
     </thead>
     <tbody>
         @php $profesori = $odeljenje->profesori @endphp
-        @foreach ($predmeti as $predmet)
+        @foreach ($mojiPredmeti as $predmet)
         @php $ukupno = 0; $i=0; @endphp
         <tr>
+
             <td>@php echo $predmet->ime_predmeta @endphp</td>
 
 
-            <td>@foreach ($profesori as $profesor) @php if($profesor->id_predmet == $predmet->id) {
-                echo ucfirst($profesor->ime) . " " . ucfirst($profesor->prezime); }@endphp
-                @endforeach</td>
+
+            <td>@foreach ($profesori as $profesor) @if($profesor->id_predmet == $predmet->id)
+                @php echo ucfirst($profesor->ime) . " " . ucfirst($profesor->prezime);
+                $id_odeljenje = $odeljenje->id;
+                $id_profesor = $profesor->id;
+                $id_predmet = $predmet->id;
+                @endphp
+            </td>
+            <td>
+                <form action="{{ route('predmet.delete')}}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit">Briši</button>
+                    <input value='@php echo $id_odeljenje @endphp' name='id_odeljenje' type="hidden">
+                    <input value='@php echo $id_profesor @endphp' name='id_profesor' type="hidden">
+                    <input value='@php echo $id_predmet @endphp' name='id_predmet' type="hidden">
+                </form>
+
+            </td>
+            @endif
+            @endforeach
 
 
         </tr>

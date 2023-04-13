@@ -24,8 +24,12 @@ class PredmetProfesorStoreRequest extends FormRequest
     {
 
         return [
-            "id_profesor" => ["required", "integer", Rule::exists("profesori", "id")],
-            "id_predmet" => ["required", "integer", Rule::exists("predmeti", "id")],
+            "id_profesor" => ["required", "integer", Rule::exists("profesori", "id"), Rule::unique('odeljenje_profesor')->where(function ($query) {
+                return $query->where('id_odeljenje', $this->get('id_odeljenje'));
+            })],
+            "id_predmet" => ["required", "integer", Rule::exists("predmeti", "id"), Rule::unique('odeljenje_predmet')->where(function ($query) {
+                return $query->where('id_odeljenje', $this->get('id_odeljenje'));
+            })],
             "id_odeljenje" => ["required", "integer", Rule::exists("odeljenja", "id")]
         ];
     }

@@ -97,6 +97,8 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('mojeOdeljenje/dodajPredmete', [PredmetController::class, 'show'])->name('predmet.store.show');
     Route::post('mojeOdeljenje/dodajPredmete', [PredmetController::class, 'store'])->name('predmet.store');
 
+    Route::delete('mojeOdeljenje/dodajPredmete', [PredmetController::class, 'destroy'])->name('predmet.delete');
+
 
     //Profesori
     Route::get('odeljenja', [OdeljenjeController::class, 'index'])->name('odeljenja');
