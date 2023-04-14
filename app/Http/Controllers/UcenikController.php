@@ -7,6 +7,9 @@ use App\Models\Ucenik;
 use App\Models\Profesor;
 use App\Models\Odeljenje;
 use App\Models\Predmet;
+
+use App\Services\SortService;
+
 use Illuminate\Support\Facades\Hash;
 
 use App\Http\Requests\UcenikStoreRequest;
@@ -18,8 +21,12 @@ class UcenikController extends Controller
 
     public function index(Request $request)
     {
+
+
         $idOdeljenje = $request->user()->odeljenje->id;
         $ucenici = Ucenik::all()->where('id_odeljenje', '=', $idOdeljenje);
+        $sortService = new SortService;
+        $ucenici = $sortService->sort($ucenici);
         return view("ucenici")->with([
             'ucenici' => $ucenici
         ]);
@@ -43,6 +50,7 @@ class UcenikController extends Controller
     }
     public function showProfesor(Request $request, Odeljenje $odeljenje, Ucenik $ucenik)
     {
+
         $profesor = $request->user();
         $predmet = $profesor->predmet;
         $odeljenje = $ucenik->odeljenje;
@@ -57,6 +65,7 @@ class UcenikController extends Controller
 
     public function store(UcenikStoreRequest $request)
     {
+
         $razredni = $request->user();
         $ucenik = new Ucenik;
         $ucenik->ime = $request->input('ime');

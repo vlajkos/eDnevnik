@@ -13,7 +13,7 @@ class Odeljenje extends Model
 
     public function razredni()
     {
-        return $this->belongsTo(Profesor::class, "id_razredni")->where("is_razredni", "=", "true");
+        return $this->belongsTo(Profesor::class, "id_razredni")->where("is_razredni", "=", "1");
     }
     public function ucenici()
     {

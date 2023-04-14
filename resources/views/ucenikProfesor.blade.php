@@ -31,8 +31,13 @@
             <td>@foreach ($ocene as $ocena)@php if($ocena->id_predmet == $predmet->id) {
                 $i++;
                 $ukupno += $ocena->vrednost;
-                echo $ocena->vrednost; }
-                @endphp @endforeach</td>
+                $id_ocena = $ocena->id;
+                @endphp
+                <a class="ocena-anchor" href="{{ route('ocena.show.profesor', ['odeljenje'=> $odeljenje, 'ucenik'=>$ucenik, 'ocena' => $id_ocena ]) }}">
+                    @php
+                    echo $ocena->vrednost; }@endphp
+                    @endforeach </a>
+            </td>
             <td>@php if ($i !=0) {$prosek = number_format($ukupno/$i, 2); echo $prosek; } @endphp </td>
 
         </tr>

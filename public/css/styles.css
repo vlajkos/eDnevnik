@@ -40,3 +40,8 @@
 .dodajOcenuForm h3 {
     align-self: center;
 }
+
+.ocena-anchor,
+.custom-anchor {
+    text-decoration: none;
+}

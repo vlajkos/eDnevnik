@@ -26,8 +26,12 @@ class OcenaController extends Controller
     }
 
 
-    public function show(Request $request, Ocena $ocena)
+    public function show(Request $request, Ucenik $ucenik, Ocena $ocena)
     {
-        return view('Ocene')->with(['ocena' => $ocena]);
+        return view('ocena')->with(['ocena' => $ocena]);
+    }
+    public function showProfesor(Request $request, Odeljenje $odeljenje, Ucenik $ucenik, Ocena $ocena)
+    {
+        return view('ocena')->with(['ocena' => $ocena]);
     }
 }
