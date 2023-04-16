@@ -44,5 +44,19 @@ class OcenaSeeder extends Seeder
         $ocena = $this->factory(4, "opis", 1, 2, 1);
         $ocena = $this->factory(3, "opis", 1, 2, 1);
         $ocena = $this->factory(5, "opis", 1, 2, 1);
+
+        $ocena = $this->factory(2, "opis", 4, 2, 4);
+        $ocena = $this->factory(2, "opis", 4, 2, 4);
+        $ocena = $this->factory(4, "opis", 4, 2, 4);
+
+        $ocena = $this->factory(2, "opis", 3, 2, 3);
+        $ocena = $this->factory(4, "opis", 3, 2, 3);
+        $ocena = $this->factory(4, "opis", 3, 2, 3);
+        $ocena = $this->factory(2, "opis", 3, 2, 3);
+
+        $ocena = $this->factory(3, "opis", 2, 2, 2);
+        $ocena = $this->factory(4, "opis", 2, 2, 2);
+        $ocena = $this->factory(1, "opis", 2, 2, 2);
+        $ocena = $this->factory(3, "opis", 2, 2, 2);
     }
 }

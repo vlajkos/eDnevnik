@@ -86,7 +86,7 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::post('profesor/logout', [ProfesorAuthController::class, 'logout'])
         ->name('profesor.logout');
     //RUTE ZA UCENIKE
-    Route::get('ucenici/dodaj', [UcenikController::class, 'create'])->name('ucenik.store.show');
+    Route::get('mojeOdeljenje/dodajUcenika', [UcenikController::class, 'create'])->name('ucenik.store.show');
     Route::post('ucenici/dodaj', [UcenikController::class, 'store'])->name('ucenik.store');
     // Route::get('ucenici', [UcenikController::class, 'index'])->name('ucenici.show');
 
