@@ -52,6 +52,7 @@ class UcenikController extends Controller
     {
 
         $profesor = $request->user();
+        if ($profesor->id != )
         $predmet = $profesor->predmet;
         $odeljenje = $ucenik->odeljenje;
         $ocene = $ucenik->ocene;
