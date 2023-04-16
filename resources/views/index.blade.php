@@ -7,9 +7,9 @@
     echo "Zdravo " . $loggedUser->ime . " " . $loggedUser->prezime;
     ?>
 </h1>
-<a href="{{ route('odeljenja')}}">Odeljenja - profesor</a>
+<a class="anchor-wlc" href="{{ route('odeljenja')}}">Odeljenja - profesor</a>
 <br>
-<a href="{{ route('odeljenje')}}">Odeljenje - razredni</a>
+<a class="anchor-wlc" href="{{ route('odeljenje')}}">Odeljenje - razredni</a>
 
 
 

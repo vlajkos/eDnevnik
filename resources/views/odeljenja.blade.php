@@ -2,19 +2,44 @@
 
 @section('content')
 
-@foreach($odeljenja as $odeljenje)
-
-
-<a href="{{ route('odeljenje.show', ['odeljenje' => $odeljenje]) }}">
-    @php
-    echo $odeljenje->naziv;
-    @endphp
-</a>
-<br>
-@endforeach
 
 
 
+<table class="table">
+
+    <thead>
+        <tr>
+            <th>Odeljenje
+            </th>
 
 
-@endsection
+            <th>Razredni
+            </th>
+
+
+        </tr>
+
+    </thead>
+
+    <tbody>
+        @foreach($odeljenja as $odeljenje)
+        <tr>
+            <td><a class="anchor-wlc" href="{{ route('odeljenje.show', ['odeljenje' => $odeljenje]) }}">
+                    @php
+                    echo $odeljenje->naziv;
+                    @endphp
+                </a></td>
+
+            <td>@php echo ucfirst($odeljenje->razredni->ime) . " " . ucfirst($odeljenje->razredni->prezime) @endphp</td>
+        </tr>
+        @endforeach
+    </tbody>
+
+    <br>
+
+
+
+
+
+
+    @endsection

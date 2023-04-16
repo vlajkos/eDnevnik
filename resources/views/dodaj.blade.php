@@ -2,27 +2,27 @@
 
 @section('content')
 
-<form method="POST" action="{{ route('ucenik.store') }}">
+<form class="addForm" method="POST" action="{{ route('ucenik.store') }}">
     @csrf
-    <label for="ime">ime</label>
+    <label for="ime">Ime</label>
     <input id="ime" name="ime" type="text">
     <br>
-    <label for="prezime">prezime</label>
+    <label for="prezime">Prezime</label>
     <input id="prezime" name="prezime" type="text">
     <br>
-    <label for="email">email</label>
+    <label for="email">Email</label>
     <input id="email" name="email" type="text">
     <br>
-    <label for="lozinka">lozinka</label>
+    <label for="lozinka">Lozinka</label>
     <input id="lozinka" name="password" type="text">
     <br>
-    <label for="jmbg">jmbg</label>
+    <label for="jmbg">Jmbg</label>
     <input id="jmbg" name="jmbg" type="text">
     <br>
-    <label for="broj_telefona">broj telefona</label>
+    <label for="broj_telefona">Broj Telefona</label>
     <input id="broj_telefona" name="broj_telefona" type="text">
     <br>
-    <label for="datum_rodjenja">Datum rodjenja</label>
+    <label for="datum_rodjenja">Datum Rodjenja</label>
     <input type="date" name="datum_rodjenja" id="datum_rodjenja">
     <br>
     <button type="submit">Dodaj</button>

@@ -7,6 +7,7 @@ use App\Models\Ucenik;
 use App\Models\Profesor;
 use App\Models\Odeljenje;
 use App\Models\Predmet;
+use App\Services\RedirectService;
 
 use App\Services\SortService;
 
@@ -50,18 +51,24 @@ class UcenikController extends Controller
     }
     public function showProfesor(Request $request, Odeljenje $odeljenje, Ucenik $ucenik)
     {
-
         $profesor = $request->user();
-        if ($profesor->id != )
+        $profesori = $odeljenje->profesori;
         $predmet = $profesor->predmet;
         $odeljenje = $ucenik->odeljenje;
         $ocene = $ucenik->ocene;
-        return view('ucenikProfesor')->with([
-            'ucenik' => $ucenik,
-            'ocene' => $ocene,
-            'odeljenje' => $odeljenje,
-            'predmet' => $predmet
-        ]);
+        //Proveravamo da profesor ne moze kroz link da pristupi bilo kom učeniku i daje mu ocne
+        foreach ($profesori as $prof) {
+            if ($prof->id === $profesor->id) {
+                return view('ucenikProfesor')->with([
+                    'ucenik' => $ucenik,
+                    'ocene' => $ocene,
+                    'odeljenje' => $odeljenje,
+                    'predmet' => $predmet
+                ]);
+            }
+        }
+        $service = new RedirectService;
+        return  $service->redirectProfesor($profesor);
     }
 
     public function store(UcenikStoreRequest $request)
@@ -78,6 +85,6 @@ class UcenikController extends Controller
         $ucenik->broj_telefona = $request->input('broj_telefona');
         $ucenik->id_odeljenje = $razredni->odeljenje->id;
         $ucenik->save();
-        return redirect()->route('index');
+        return redirect()->route('odeljenje');
     }
 }

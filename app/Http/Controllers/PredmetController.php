@@ -10,11 +10,17 @@ use App\Models\Odeljenje_profesor;
 use App\Http\Requests\PredmetProfesorStoreRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Services\PredmetProfesorStoreService;
+use App\Services\RedirectService;
 
 class PredmetController extends Controller
 {
     public function show(Request $request)
     {
+        $profesor = Auth::user();
+        if (!$profesor->is_razredni) {
+            $service = new RedirectService;
+            return $service->redirectProfesor($profesor);
+        }
         $predmeti = Predmet::all();
         $profesori = Profesor::all();
         $odeljenje  = Auth::user()->odeljenje;

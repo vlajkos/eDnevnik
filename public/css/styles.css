@@ -13,6 +13,10 @@
 
 }
 
+a {
+    text-decoration: none;
+}
+
 .dodajOcenuDiv {
     display: flex;
     align-items: center;
@@ -44,4 +48,45 @@
 .ocena-anchor,
 .custom-anchor {
     text-decoration: none;
+}
+
+.addForm {
+    max-width: 24rem;
+
+}
+
+.addForm label {
+    width: 10rem;
+    font-size: 1.2rem;
+    text-align: right;
+    margin-bottom: .8rem;
+}
+
+.addForm input {
+    margin-left: 10px;
+}
+
+.addForm button {
+    border: 1px solid black;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-left: 14rem;
+
+}
+
+
+/* Login Forma */
+.loginForm {
+    font-size: 1.6rem;
+    margin-top: 1rem;
+
+}
+
+.loginForm a {
+    margin-right: 2rem;
+}
+
+
+.anchor-wlc {
+    font-size: 1.6rem;
 }
