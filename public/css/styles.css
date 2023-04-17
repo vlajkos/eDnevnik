@@ -90,3 +90,40 @@ a {
 .anchor-wlc {
     font-size: 1.6rem;
 }
+
+
+/* Weather */
+
+.weather-main {
+    display: flex;
+    flex-basis: 16rem;
+    justify-content: space-between;
+}
+
+.weather-container {
+    display: flex;
+    flex-basis: 9rem;
+    font-size: 10px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.weather-container h6:last-child {
+    font-size: 12px;
+    margin: 0;
+}
+
+.weather-container h6:first-child {
+    font-size: 10px;
+}
+
+.weather-container div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.weather-container img {
+    width: 2.4rem;
+    border-radius: 5px;
+}

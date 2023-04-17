@@ -1,5 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+@php
+$queryString = http_build_query([
+'access_key' => '412d876b621652e650588f7b83b0ea17',
+'query' => "Mladenovac",
+
+]);
+$response = Http::get("http://api.weatherstack.com/current", $queryString);
+
+$jsonData = $response->json();
+
+
+@endphp
 
 <head>
     <meta charset="UTF-8">
@@ -19,8 +31,22 @@
                     <div class="d-flex justify-content-between">
                         <p class="m-0">eDnevnik</p>
 
-                        <div>
+
+
+
+
+                        <div class="weather-main">
                             @auth
+                            <div class="weather-container">
+                                <div>
+                                    <h6>@php echo($jsonData["request"]["query"]) @endphp</h6>
+                                    <h6>@php echo($jsonData["current"]["temperature"] . " " ."°C"); @endphp</h6>
+                                </div>
+
+                                <div><img src="@php echo($jsonData['current']['weather_icons'][0]) @endphp"></div>
+
+                            </div>
+
                             <form method="POST" @auth('web') action="{{ route('ucenik.logout') }}" @endauth @auth('admin') action="{{ route('profesor.logout') }}" @endauth>
                                 @csrf
                                 <button type="submit" class="btn btn-light">Log out</button>
@@ -41,5 +67,7 @@
     <script src="{{ asset('js/app.js') }}"></script>
     @vite('resources/js/app.js')
 </body>
+
+
 
 </html>
