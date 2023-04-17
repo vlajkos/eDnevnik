@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ProfesorAuthApiController;
 use App\Http\Controllers\Api\OdeljenjeApiController;
 use App\Http\Controllers\Api\UcenikApiController;
+use App\Http\Controllers\Api\OcenaApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,4 +42,5 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('odeljenja', [OdeljenjeApiController::class, 'index'])->name('api.odeljenja');
     Route::get('odeljenja/{odeljenje}', [OdeljenjeApiController::class, 'show'])->name('api.odeljenja.show');
     Route::get('odeljenja/{odeljenje}/ucenik/{ucenik}', [UcenikApiController::class, 'show'])->name('api.odeljenja.show.ucenik');
+    Route::post('odeljenja/{odeljenje}/ucenik/{ucenik}', [OcenaApiController::class, 'store'])->name('api.store.ocena');
 });
