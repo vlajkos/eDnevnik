@@ -1,18 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
 use App\Services\AuthService;
 
-class ProfesorAuthController extends Controller
+class ProfesorAuthApiController extends Controller
 {
-    public function loginShow()
-    {
-        return view('auth.profesor_login');
-    }
 
     public function login(LoginRequest $request)
     {
@@ -23,18 +19,13 @@ class ProfesorAuthController extends Controller
             $request->input('password')
         );
 
-        return $success ?
-            redirect()->route('index') :
-            redirect()->back()->withErrors([
-                'email' => 'Neispravni kredencijali',
-            ]);
+        return  response()->json(["success" => $success]);
     }
-
     public function logout()
     {
         $service = new AuthService();
         $service->logout('admin');
 
-        return redirect()->route('profesor.login.show');
+        return response()->json(["success" => true]);
     }
 }

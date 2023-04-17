@@ -34,12 +34,12 @@ class UcenikSeeder extends Seeder
         $ucenik = $this->factory("jovana", "pavlović", "jovanaucenik@gmail.com", "4234567891234", "sifraucenik", 1);
         $ucenik = $this->factory("aleksa", "tomović", "aleksaucenik@gmail.com", "3234567891234", "sifraucenik", 1);
 
-        $ucenik = $this->factory("Nemanja", "đedović", "nemanjaucenik@gmail.com", "2234567891234", "sifraucenik", 1);
+        $ucenik = $this->factory("Nemanja", "Đedović", "nemanjaucenik@gmail.com", "2234567891234", "sifraucenik", 1);
         $ucenik = $this->factory("ana", "ignjatović", "anaignjatovic@gmail.com", "1234567891244", "sifraucenik", 1);
         $ucenik = $this->factory("isidora", "jeremić", "isidoraucenik@gmail.com", "1234567891234", "sifraucenik", 1);
         $ucenik = $this->factory("andrija", "ilić", "andrijaucenik@gmail.com", "1234567891234", "sifraucenik", 1);
 
-        $ucenik = $this->factory("Marija", "živić", "marijaucenik@gmail.com", "234567891234", "sifraucenik", 2);
+        $ucenik = $this->factory("Marija", "Živić", "marijaucenik@gmail.com", "234567891234", "sifraucenik", 2);
         $ucenik = $this->factory("jovana", "spasić", "jovanaspasic@gmail.com", "29234567891244", "sifraucenik", 2);
         $ucenik = $this->factory("ana", "lazić", "analazic@gmail.com", "9934567891234", "sifraucenik", 2);
         $ucenik = $this->factory("Mladen", "Jovanović", "mladenjovanovic@gmail.com", "0234567891234", "sifraucenik", 2);

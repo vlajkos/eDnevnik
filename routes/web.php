@@ -1,13 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\ProfesorAuthController;
-use App\Http\Controllers\Auth\UcenikAuthController;
-use App\Http\Controllers\ControllerTest;
-use App\Http\Controllers\UcenikController;
-use App\Http\Controllers\OdeljenjeController;
-use App\Http\Controllers\OcenaController;
-use App\Http\Controllers\PredmetController;
+use App\Http\Controllers\Web\Auth\ProfesorAuthController;
+use App\Http\Controllers\Web\Auth\UcenikAuthController;
+use App\Http\Controllers\Web\ControllerTest;
+use App\Http\Controllers\Web\UcenikController;
+use App\Http\Controllers\Web\OdeljenjeController;
+use App\Http\Controllers\Web\OcenaController;
+use App\Http\Controllers\Web\PredmetController;
 
 /*
 |--------------------------------------------------------------------------

@@ -2,6 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\ProfesorAuthApiController;
+use App\Http\Controllers\Api\OdeljenjeApiController;
+use App\Http\Controllers\Api\UcenikApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +27,18 @@ use Illuminate\Support\Facades\Route;
 //     Route::post('/user/logout', [UserAuthController::class, 'logout'])
 //         ->name('user.logout');
 // });
+
+
+Route::middleware(['guest:admin'])->group(function () {
+    Route::post('/profesor/login', [ProfesorAuthApiController::class, 'login'])
+        ->name('api.profesor.login');
+});
+
+Route::middleware(['auth:admin'])->group(function () {
+    Route::post('/profesor/logout', [ProfesorAuthApiController::class, 'logout'])
+        ->name('api.profesor.logout');
+
+    Route::get('odeljenja', [OdeljenjeApiController::class, 'index'])->name('api.odeljenja');
+    Route::get('odeljenja/{odeljenje}', [OdeljenjeApiController::class, 'show'])->name('api.odeljenja.show');
+    Route::get('odeljenja/{odeljenje}/ucenik/{ucenik}', [UcenikApiController::class, 'show'])->name('api.odeljenja.show.ucenik');
+});

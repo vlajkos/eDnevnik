@@ -14,7 +14,7 @@ $odeljenjeId = $odeljenje->id;
 <br>
 
 @endforeach -->
-<h3>Odeljenje: @php echo $odeljenje->naziv. "," @endphp Razredni: @php echo $odeljenje->razredni->ime . " " . $odeljenje->razredni->prezime @endphp</h3>
+<h3>Odeljenje: @php echo $odeljenje->naziv. "," @endphp Razredni: @php echo ucfirst($odeljenje->razredni->ime) . " " . ucfirst($odeljenje->razredni->prezime) @endphp</h3>
 <h1>Ucenici</h1>
 
 <table class="table">

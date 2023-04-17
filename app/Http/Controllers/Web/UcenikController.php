@@ -1,18 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Web;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Ucenik;
 use App\Models\Profesor;
 use App\Models\Odeljenje;
 use App\Models\Predmet;
 use App\Services\RedirectService;
-
 use App\Services\SortService;
-
 use Illuminate\Support\Facades\Hash;
-
 use App\Http\Requests\UcenikStoreRequest;
 
 
@@ -54,9 +52,13 @@ class UcenikController extends Controller
         $profesor = $request->user();
         $profesori = $odeljenje->profesori;
         $predmet = $profesor->predmet;
-        $odeljenje = $ucenik->odeljenje;
+        $odeljenjeProvera = $ucenik->odeljenje;
         $ocene = $ucenik->ocene;
         //Proveravamo da profesor ne moze kroz link da pristupi bilo kom učeniku i daje mu ocne
+        if ($odeljenje->id != $odeljenjeProvera->id) {
+            $service = new RedirectService;
+            return  $service->redirectProfesor($profesor);
+        }
         foreach ($profesori as $prof) {
             if ($prof->id === $profesor->id) {
                 return view('ucenikProfesor')->with([
