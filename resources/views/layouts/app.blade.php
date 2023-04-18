@@ -37,7 +37,7 @@ $jsonData = $response->json();
 
                         <div class="weather-main">
                             @auth
-                            <!-- <div class="weather-container">
+                            <div class="weather-container">
                                 <div>
                                     <h6>@php echo($jsonData["request"]["query"]) @endphp</h6>
                                     <h6>@php echo($jsonData["current"]["temperature"] . " " ."°C"); @endphp</h6>
@@ -45,7 +45,7 @@ $jsonData = $response->json();
 
                                 <div><img src="@php echo($jsonData['current']['weather_icons'][0]) @endphp"></div>
 
-                            </div> -->
+                            </div>
 
                             <form method="POST" @auth('web') action="{{ route('ucenik.logout') }}" @endauth @auth('admin') action="{{ route('profesor.logout') }}" @endauth>
                                 @csrf
