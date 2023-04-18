@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\predmet;
+use App\Models\Predmet;
 
 class PredmetSeeder extends Seeder
 {
