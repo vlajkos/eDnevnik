@@ -39,8 +39,17 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::post('/profesor/logout', [ProfesorAuthApiController::class, 'logout'])
         ->name('api.profesor.logout');
 
+
+    //ODELJENJE PROFESOR RUTE
     Route::get('odeljenja', [OdeljenjeApiController::class, 'index'])->name('api.odeljenja');
     Route::get('odeljenja/{odeljenje}', [OdeljenjeApiController::class, 'show'])->name('api.odeljenja.show');
     Route::get('odeljenja/{odeljenje}/ucenik/{ucenik}', [UcenikApiController::class, 'show'])->name('api.odeljenja.show.ucenik');
     Route::post('odeljenja/{odeljenje}/ucenik/{ucenik}', [OcenaApiController::class, 'store'])->name('api.store.ocena');
+
+
+    //ODELJENJE RAZREDNI RUTE
+    Route::get('mojeOdeljenje', [OdeljenjeApiController::class, 'showRazredni'])->name('api.mojeOdeljenje.show');
+    Route::get('mojeOdeljenje/ucenik/{ucenik}', [UcenikApiController::class, 'showRazredni'])->name('api.mojeOdeljenje.show.ucenik');
+
+    Route::post('mojeOdeljenje/dodajUcenika', [UcenikApiController::class, 'store'])->name('api.mojeOdeljenje.add.ucenik');
 });

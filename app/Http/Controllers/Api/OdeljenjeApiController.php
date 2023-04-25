@@ -39,4 +39,22 @@ class OdeljenjeApiController extends Controller
         }
         return response()->json(["success" => false, "poruka" => "Nije vam dozvoljen pristup ovom odeljenju"]);
     }
+
+
+    public function showRazredni(Request $request)
+    {
+
+        $razredni = $request->user();
+        $odeljenje = $razredni->odeljenje;
+        $ucenici = $odeljenje->ucenici;
+        $sortService = new SortService;
+
+        if ($razredni->is_razredni) {
+            $ucenici = $sortService->sort($ucenici);
+            $razredni = $odeljenje->razredni;
+            return response()->json(["odeljenje" => $odeljenje->naziv, "razredni" => $razredni, "ucenici" => $ucenici]);
+        }
+
+        return response()->json(["success" => false, "poruka" => "Niste razredni starešina"]);
+    }
 }

@@ -5,12 +5,11 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Ucenik;
-use App\Models\Profesor;
 use App\Models\Odeljenje;
-use App\Models\Predmet;
 use App\Services\RedirectService;
 use App\Services\SortService;
-use Illuminate\Support\Facades\Hash;
+use App\Services\UcenikStoreService;
+
 use App\Http\Requests\UcenikStoreRequest;
 
 
@@ -78,15 +77,8 @@ class UcenikController extends Controller
 
         $razredni = $request->user();
         $ucenik = new Ucenik;
-        $ucenik->ime = $request->input('ime');
-        $ucenik->prezime = $request->input('prezime');
-        $ucenik->email = $request->input('email');
-        $ucenik->password = Hash::make($request->input('password'));
-        $ucenik->jmbg = $request->input('jmbg');
-        $ucenik->datum_rodjenja = $request->input('datum_rodjenja');
-        $ucenik->broj_telefona = $request->input('broj_telefona');
-        $ucenik->id_odeljenje = $razredni->odeljenje->id;
-        $ucenik->save();
+        $ucenikStoreService = new UcenikStoreService;
+        $ucenikStoreService->store($request, $razredni, $ucenik);
         return redirect()->route('odeljenje');
     }
 }
