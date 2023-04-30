@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Ucenik;
 use App\Models\Odeljenje;
 use App\Services\UcenikStoreService;
+use App\Services\ResponseService;
 
 
 
@@ -18,38 +19,38 @@ class UcenikApiController extends Controller
         $user = $request->user();
         $profesori = $odeljenje->profesori;
         $auth = false;
+        $responseService = new ResponseService;
 
         if ($ucenik->odeljenje->id != $odeljenje->id) {
-            return response()->json(["Error 404", "U traženom odeljenju ne postoji ovaj učenik"]);
+            return $responseService->response(false, 404, "U traženom odeljenju ne postoji ovaj učenik");
         }
         foreach ($profesori as $profesor) {
             if ($profesor->id == $user->id) {
                 $auth = true;
             }
         }
-        if (!$auth) return response()->json(["Error 403", "Nemate pristup ovom učeniku jer mu niste profesor"]);
+        if (!$auth) return $responseService->response(false, 403, "Nemate pristup ovom učeniku jer mu niste profesor");
 
         $ocene = $ucenik->ocene;
         $ocenePredmet =  [];
         foreach ($ocene as $ocena) {
             if ($ocena->id_predmet == $user->id_predmet) $ocenePredmet[] = $ocena->vrednost;
         }
-
-
-
-
-        return response()->json(["Odeljenje" => $odeljenje->naziv, "Ucenik" => ucfirst($ucenik->ime) . " " . ucfirst($ucenik->prezime), "Predmet" => $user->predmet->ime_predmeta, "Ocene" => $ocenePredmet]);
+        $data = ["Odeljenje" => $odeljenje->naziv, "Ucenik" => ucfirst($ucenik->ime) . " " . ucfirst($ucenik->prezime), "Predmet" => $user->predmet->ime_predmeta, "Ocene" => $ocenePredmet];
+        return $responseService->response(true, 200, "success", $data);
     }
 
 
     public function showRazredni(Request $request, Ucenik $ucenik)
     {
 
+
         $user = $request->user();
+        $responseService = new ResponseService;
 
         //Provera da li ima dozvolu za pregled
         if ($ucenik->odeljenje->razredni->id != $user->id) {
-            return  response()->json(["Error 403", "Nemate pristup ovom učeniku jer mu niste razredni starešina"]);
+            return  $responseService->response(false, 403, "Nemate pristup ovom učeniku jer mu niste razredni starešina");
         }
         $odeljenje = $ucenik->odeljenje;
         $ocene = $ucenik->ocene;
@@ -68,7 +69,9 @@ class UcenikApiController extends Controller
 
             $predmetiOcene[] = ["Predmet" => $imePredmeta, "Ocene" => $ocenePredmet];
         }
-        return response()->json(["Odeljenje" => $odeljenje->naziv, "Ucenik" => ucfirst($ucenik->ime) .  " " . ucfirst($ucenik->prezime), "Predmeti i ocene" => $predmetiOcene]);
+
+        $data = ["Odeljenje" => $odeljenje->naziv, "Ucenik" => ucfirst($ucenik->ime) .  " " . ucfirst($ucenik->prezime), "Predmeti i ocene" => $predmetiOcene];
+        return $responseService->response(true, 200, "success", $data);
     }
 
 
@@ -76,11 +79,14 @@ class UcenikApiController extends Controller
 
     public function store(UcenikStoreRequest $request)
     {
-
+        $responseService = new ResponseService;
         $razredni = $request->user();
+        if (!$razredni->is_razredni) {
+            return $responseService->response(false, 403, "Samo razredni starešina može dodavati učenike");
+        }
         $ucenik = new Ucenik;
         $ucenikStoreService = new UcenikStoreService;
         $ucenikStoreService->store($request, $razredni, $ucenik);
-        return response()->json("Uspešno ste sačuvali učenika");
+        return $responseService->response(true, 200, "Uspešno ste sačuvali učenika", $ucenik);
     }
 }

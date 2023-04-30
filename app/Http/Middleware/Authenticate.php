@@ -15,7 +15,7 @@ class Authenticate extends Middleware
     {
         if (Auth::guard('admin')->check())
             return $request->expectsJson() ? null : route('index');
-        else if (Auth::guard('web')->check()) return $request->expectsJson() ? null : route('indexUcenik');
+        else if (Auth::guard('web')->check()) return $request->expectsJson() ? null : route('index.ucenik');
         else
             return  route('login');
     }

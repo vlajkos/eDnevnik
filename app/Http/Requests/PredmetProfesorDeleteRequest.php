@@ -4,8 +4,9 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
 
-class OdeljenjeProfesorStoreRequest extends FormRequest
+class PredmetProfesorDeleteRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,9 +23,11 @@ class OdeljenjeProfesorStoreRequest extends FormRequest
      */
     public function rules(): array
     {
+
         return [
-            "id_profesor" => ["required", "integer", Rule::exists("profesori", "id")],
-            "id_odeljenje" => ["required", "integer", Rule::exists("odeljenja", "id")]
+            "id_predmet" => [
+                "required", "integer", Rule::exists("odeljenje_predmet", "id_predmet")->where("id_odeljenje", Auth::user()->odeljenje->id)
+            ]
         ];
     }
 }

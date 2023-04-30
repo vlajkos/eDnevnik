@@ -3,15 +3,16 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
 use App\Services\AuthService;
+use App\Services\ResponseService;
 
 class ProfesorAuthApiController extends Controller
 {
 
     public function login(LoginRequest $request)
     {
+        $responseService = new ResponseService;
         $service = new AuthService();
         $success = $service->login(
             'admin',
@@ -19,13 +20,14 @@ class ProfesorAuthApiController extends Controller
             $request->input('password')
         );
 
-        return  response()->json(["success" => $success]);
+        return  $responseService->response(true, 200, "Uspešno logovanje");
     }
     public function logout()
     {
+        $responseService = new ResponseService;
         $service = new AuthService();
         $service->logout('admin');
 
-        return response()->json(["success" => true]);
+        return  $responseService->response(true, 200, "Uspešno ste se izlogovali");
     }
 }

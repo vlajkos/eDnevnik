@@ -22,7 +22,7 @@ class ControllerTest extends Controller
         $predmeti = $ucenik->odeljenje->predmeti;
         $odeljenje = $ucenik->odeljenje;
         $ocene = $ucenik->ocene;
-        return view('indexUcenik')->with([
+        return view('index-ucenik')->with([
             'ucenik' => $ucenik,
             'predmeti' => $predmeti,
             'ocene' => $ocene,
@@ -33,5 +33,18 @@ class ControllerTest extends Controller
     {
 
         return view("auth/login");
+    }
+
+    public function home(Request $request)
+    {
+        $profesor = $request->user();
+        $redirectService = new RedirectService;
+        if (Auth::guard('admin')->check()) {
+            return $redirectService->redirectProfesor($profesor);
+        } elseif (Auth::guard('web')->check()) {
+            return redirect("index-ucenik");
+        } else {
+            return redirect("login");
+        }
     }
 }

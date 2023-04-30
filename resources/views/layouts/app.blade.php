@@ -29,7 +29,8 @@ $jsonData = $response->json();
             <div class="border-bottom p-2">
                 <div class="container">
                     <div class="d-flex justify-content-between">
-                        <p class="m-0">eDnevnik</p>
+
+                        <a href="{{ route('home')}}" hrefclass="m-0">eDnevnik</a>
 
 
 

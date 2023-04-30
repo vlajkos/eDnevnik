@@ -24,10 +24,16 @@ class OcenaController extends Controller
 
     public function show(Request $request, Ucenik $ucenik, Ocena $ocena)
     {
+        if (!($ucenik->id == $ocena->id_ucenik)) {
+            return "Nepostojeca ocena";
+        }
         return view('ocena')->with(['ocena' => $ocena]);
     }
     public function showProfesor(Request $request, Odeljenje $odeljenje, Ucenik $ucenik, Ocena $ocena)
     {
+        if (!($ucenik->id == $ocena->id_ucenik)) {
+            return  "Nepostojeca ocena";
+        }
         return view('ocena')->with(['ocena' => $ocena]);
     }
 }

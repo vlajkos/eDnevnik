@@ -36,9 +36,14 @@ class PredmetController extends Controller
     public function store(PredmetProfesorStoreRequest $request)
     {
 
-
+        $user = $request->user();
+        if (!$user->is_razredni) {
+            return response()->json(["Error" => "Error 403", "Message" => "Ne možete dodavati predmete jer niste razredni starešina!"]);
+        }
+        $razredni = $user;
+        $odeljenje = $razredni->odeljenje;
         $storeService = new PredmetProfesorStoreService;
-        $storeService->store($request);
+        $storeService->store($request, $odeljenje->id);
         return redirect()->route('predmet.store.show');
     }
 
