@@ -20,9 +20,8 @@ use App\Http\Controllers\Web\PredmetController;
 |
 */
 
-// Route::get('/', function () {
-//     return "HOME";
-// })->name("home");
+
+Route::get('/', [ControllerTest::class, 'index2'])->name("login");
 
 //Route::middleware([\App\Http\Middleware\IPBlockMiddleware::class])->group(function() {
 // Route::middleware(['guest:ucenik'])->group(function () {
@@ -130,5 +129,6 @@ Route::middleware(['auth:admin,web'])->group(function () {
 
 
 Route::get('/login', [ControllerTest::class, 'index2'])->name("login");
+
 
 //Rute 
